@@ -1,0 +1,177 @@
+\documentclass[letterpaper,11pt]{article}
+
+\usepackage[empty]{fullpage}
+\usepackage{titlesec}
+\usepackage{enumitem}
+\usepackage{hyperref} % Removed [hidelinks] to allow color customization
+\usepackage{fancyhdr}
+\usepackage[english]{babel}
+\usepackage{tabularx}
+\usepackage{xcolor}
+
+% --- LINK COLOR CONFIGURATION ---
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=magenta,      
+    urlcolor=blue,
+    pdftitle={Ankit Raj IIIT DELHI},
+}
+% --------------------------------
+
+% Ensure PDF is machine-readable for ATS parsers
+\ifdefined\pdfgentounicode
+  \pdfgentounicode=1
+\fi
+
+\pagestyle{fancy}
+\fancyhf{}
+\fancyfoot{}
+\renewcommand{\headrulewidth}{0pt}
+\renewcommand{\footrulewidth}{0pt}
+
+\addtolength{\oddsidemargin}{-0.5in}
+\addtolength{\evensidemargin}{-0.5in}
+\addtolength{\textwidth}{1.0in}
+\addtolength{\topmargin}{-0.6in}
+\addtolength{\textheight}{1.2in}
+
+\urlstyle{same}
+\raggedbottom
+\raggedright
+\setlength{\tabcolsep}{0in}
+
+% Section formatting
+\titleformat{\section}{
+  \vspace{-6pt}\scshape\raggedright\large
+}{}{0em}{}[\color{black}\titlerule \vspace{-4pt}]
+
+% Custom commands
+\newcommand{\resumeItem}[1]{
+  \item\small{
+    {#1 \vspace{-2pt}}
+  }
+}
+
+\newcommand{\resumeSubheading}[4]{
+  \vspace{-2pt}\item
+    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
+      \textbf{#1} & #2 \\
+      \textit{\small#3} & \textit{\small #4} \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeProjectHeading}[2]{
+    \item
+    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+      \small#1 & #2 \\
+    \end{tabular*}\vspace{-7pt}
+}
+
+\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeItemListStart}{\begin{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-4pt}}
+
+\begin{document}
+
+%----------------------------------------------------------------------------------------
+%	HEADING
+%----------------------------------------------------------------------------------------
+
+\begin{center}
+    \textbf{\Huge \scshape Ankit Raj} \\ \vspace{3pt}
+    \small Noida, India $|$ \href{tel:9354596935}{+91-9354596935} $|$ 
+    \href{mailto:ankit21311@iiitd.ac.in}{ankit21311@iiitd.ac.in} \\
+    \href{https://www.linkedin.com/in/ankit21311/}{LinkedIn} $|$ 
+    \href{https://github.com/ankit21311}{GitHub} $|$
+    \href{https://leetcode.com/u/ankit21311/}{LeetCode}
+\end{center}
+
+%----------------------------------------------------------------------------------------
+%	TECHNICAL SKILLS
+%----------------------------------------------------------------------------------------
+
+\section{Technical Skills}
+ \begin{itemize}[leftmargin=0.15in, label={}]
+    \small{\item{
+     \textbf{Languages}{: Python, Java, SQL, JavaScript (ES6+), HTML5, CSS3}  \\
+     \textbf{Frameworks}{: FastAPI, Django, Spring Boot, Flask, Node.js}  \\
+     \textbf{Tools \& Cloud}{: Git, GitHub, Docker, Firebase, Render, Netlify, VS Code, Figma}  \\
+     \textbf{Specialized}{: LLMs (OpenAI, Gemini, Llama), RAG, ChromaDB, BM25 Algorithm, SEO, GA4}  \\
+     \textbf{Core Concepts}{: Data Structures (DSA), OOP, NLP, Web Scraping, Performance Analytics}  
+    }}
+ \end{itemize}
+
+%----------------------------------------------------------------------------------------
+%	WORK EXPERIENCE
+%----------------------------------------------------------------------------------------
+
+\section{Work Experience}
+  \resumeSubHeadingListStart
+
+    \resumeSubheading
+      {Senior MarTech Executive}{Oct 2025 -- Dec 2025}
+      {Newparts Inc}{Remote}
+      \resumeItemListStart
+        \resumeItem{Architected data tracking using \textbf{Microsoft Clarity and GA4}, identifying friction points that led to a \textbf{15\% increase} in checkout completion rates.}
+        \resumeItem{Optimized \textbf{Technical SEO} and Core Web Vitals, reducing LCP by \textbf{400ms} and increasing organic search visibility by \textbf{12\%} within 2 months.}
+        \resumeItem{Automated the \textbf{Vehicle Platform Guide (VPG)} generation via Python/Flask, reducing manual effort by \textbf{30+ hours/week} and achieving an \textbf{80\% efficiency gain}.}
+        \resumeItem{Developed 15+ responsive frontend components using JS/CSS, boosting on-page user engagement metrics by \textbf{22\%} across mobile devices.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {AI/ML Consultant}{Jul 2025 -- Aug 2025}
+      {Nexus 3p Foundation}{Remote}
+      \resumeItemListStart
+        \resumeItem{Designed a scalable \textbf{Web Scraping} architecture using FastAPI; processed \textbf{50+ data points daily} with a 99\% success rate on Render.}
+        \resumeItem{Engineered the \textbf{Metabolical Chatbot} using NLP, reducing response latency by \textbf{35\%} and serving \textbf{500+ unique user queries} during pilot phase.}
+      \resumeItemListEnd
+
+    \resumeSubheading
+      {AI/ML Research Intern}{Apr 2024 -- Jan 2025}
+      {Complex Systems Laboratory, IIIT-Delhi}{New Delhi, India}
+      \resumeItemListStart
+        \resumeItem{Built a RAG-based AI chatbot for \textbf{50,000+ recipes}, achieving \textbf{sub-200ms} semantic search latency using ChromaDB and OpenAI Vector API.}
+        \resumeItem{Implemented a \textbf{LLaMA-based fallback} mechanism, improving query accuracy by \textbf{18\%} when handling ambiguous user prompts.}
+      \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%----------------------------------------------------------------------------------------
+%	PROJECTS
+%----------------------------------------------------------------------------------------
+
+\section{Projects}
+  \resumeSubHeadingListStart
+
+    \resumeProjectHeading
+        {\textbf{\href{https://astrology-chatbot.onrender.com/}{Astro Vaani}} $|$ \emph{Python, Gemini API, Node.js, Express, BM25}}{Sept 2025 -- Oct 2025}
+        \resumeItemListStart
+          \resumeItem{Spearheaded a conversational AI solution using \textbf{Prompt Engineering}, resulting in a \textbf{80\% user satisfaction rate} during initial beta testing.}
+          \resumeItem{Built a Flask-based dark-themed UI that supported \textbf{500+ concurrent sessions} with cross-device responsive design.}
+        \resumeItemListEnd
+
+    \resumeProjectHeading
+        {\textbf{\href{https://search-engine-rib1.onrender.com/}{DSA Problems Search Engine}} $|$ \emph{Next.js, TypeScript, Tailwind, BM25}}{Mar 2025 -- May 2025}
+        \resumeItemListStart
+          \resumeItem{Developed a search engine for \textbf{3,000+ problems}, utilizing \textbf{BM25 ranking} to improve search relevance scores by \textbf{25\%} vs standard keyword search.}
+        \resumeItemListEnd
+
+  \resumeSubHeadingListEnd
+
+%----------------------------------------------------------------------------------------
+%	EDUCATION \& ACHIEVEMENTS
+%----------------------------------------------------------------------------------------
+
+\section{Education \& Achievements}
+  \resumeSubHeadingListStart
+    \resumeSubheading
+      {Indraprastha Institute of Information Technology Delhi (IIIT-Delhi)}{New Delhi, India}
+      {B.Tech in Computer Science; CGPA: 7.24/10.0}{June 2021 -- June 2025}
+    \resumeItemListStart
+      \resumeItem{\textbf{Japanese Proficiency}: Completed Basic Level ; scored in the \textbf{top 10\%} of Fast Retailing Japanese Language program at IIITD.}
+    \resumeItemListEnd
+  \resumeSubHeadingListEnd
+
+\end{document}
