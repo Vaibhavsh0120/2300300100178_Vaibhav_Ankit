@@ -6,23 +6,30 @@ using namespace std;
 int subarraySum(vector<int>& nums, int k) {
 
     int result = 0;
-    int CurrSum = 0;
-            // Prefix Sum , Count
+    int currSum = 0;
+
+    // prefixSum → frequency
     unordered_map<int, int> mp;
-    mp[0] = 1;[]  // base conditon -- empty sub array
+    mp[0] = 1;   // base condition (empty prefix)
 
-    for (int i = 0 ; i < nums.size() ; i++) {
-        CurrSum+=nums[i];
-        int diff = CurrSum - k;  // Check how much is extra from what is needed
+    for (int i = 0; i < nums.size(); i++) {
 
+        currSum += nums[i];
+
+        int diff = currSum - k;
+
+        // If prefix with 'diff' exists,
+        // we found subarrays summing to k
         if (mp.count(diff)) {
-            result += mp[diff];  // check if the extra is already found / can be deleted
+            result += mp[diff];
         }
 
-        mp[CurrSum]++;
+        mp[currSum]++;
     }
+
     return result;
 }
+
 
 int search(vector<int>& nums, int target) {
 
