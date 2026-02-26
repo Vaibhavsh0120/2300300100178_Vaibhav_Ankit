@@ -1,177 +1,176 @@
-\documentclass[letterpaper,11pt]{article}
+\documentclass[letterpaper,10.8pt]{article}
 
+% ---------- PACKAGES ----------
 \usepackage[empty]{fullpage}
 \usepackage{titlesec}
 \usepackage{enumitem}
-\usepackage{hyperref} % Removed [hidelinks] to allow color customization
+\usepackage{hyperref}
 \usepackage{fancyhdr}
 \usepackage[english]{babel}
-\usepackage{tabularx}
 \usepackage{xcolor}
+\usepackage{tabularx}
+\usepackage{lmodern}
 
-% --- LINK COLOR CONFIGURATION ---
+% ---------- LINK SETTINGS ----------
 \hypersetup{
     colorlinks=true,
-    linkcolor=blue,
-    filecolor=magenta,      
-    urlcolor=blue,
-    pdftitle={Ankit Raj IIIT DELHI},
+    urlcolor=blue
 }
-% --------------------------------
 
-% Ensure PDF is machine-readable for ATS parsers
+% ---------- ATS MACHINE READABLE ----------
 \ifdefined\pdfgentounicode
   \pdfgentounicode=1
 \fi
 
+% ---------- PAGE ----------
 \pagestyle{fancy}
 \fancyhf{}
-\fancyfoot{}
 \renewcommand{\headrulewidth}{0pt}
-\renewcommand{\footrulewidth}{0pt}
 
-\addtolength{\oddsidemargin}{-0.5in}
-\addtolength{\evensidemargin}{-0.5in}
-\addtolength{\textwidth}{1.0in}
-\addtolength{\topmargin}{-0.6in}
-\addtolength{\textheight}{1.2in}
+\addtolength{\oddsidemargin}{-0.55in}
+\addtolength{\evensidemargin}{-0.55in}
+\addtolength{\textwidth}{1.1in}
+\addtolength{\topmargin}{-0.7in}
+\addtolength{\textheight}{1.45in}
 
-\urlstyle{same}
-\raggedbottom
 \raggedright
 \setlength{\tabcolsep}{0in}
+\setlength{\parskip}{0pt}
 
-% Section formatting
+% ---------- SECTION ----------
 \titleformat{\section}{
-  \vspace{-6pt}\scshape\raggedright\large
-}{}{0em}{}[\color{black}\titlerule \vspace{-4pt}]
+  \vspace{-7pt}\scshape\raggedright\normalsize
+}{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
 
-% Custom commands
+% ---------- COMMANDS ----------
 \newcommand{\resumeItem}[1]{
-  \item\small{
-    {#1 \vspace{-2pt}}
-  }
+  \item\small{#1}
 }
 
 \newcommand{\resumeSubheading}[4]{
-  \vspace{-2pt}\item
-    \begin{tabular*}{0.97\textwidth}[t]{l@{\extracolsep{\fill}}r}
-      \textbf{#1} & #2 \\
-      \textit{\small#3} & \textit{\small #4} \\
-    \end{tabular*}\vspace{-7pt}
+  \item
+  \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+    \textbf{#1} & #2 \\
+    \textit{\small #3} & \textit{\small #4}
+  \end{tabular*}
 }
 
 \newcommand{\resumeProjectHeading}[2]{
-    \item
-    \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-      \small#1 & #2 \\
-    \end{tabular*}\vspace{-7pt}
+  \item
+  \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
+    \small #1 & #2
+  \end{tabular*}
 }
 
-\newcommand{\resumeSubHeadingListStart}{\begin{itemize}[leftmargin=0.15in, label={}]}
+\newcommand{\resumeSubHeadingListStart}{
+\begin{itemize}[leftmargin=0.15in,label={},itemsep=2pt,topsep=2pt]
+}
 \newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
-\newcommand{\resumeItemListStart}{\begin{itemize}}
-\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{-4pt}}
 
+\newcommand{\resumeItemListStart}{
+\begin{itemize}[leftmargin=0.2in,itemsep=1pt,topsep=1pt]
+}
+\newcommand{\resumeItemListEnd}{\end{itemize}}
+
+% ================= DOCUMENT =================
 \begin{document}
 
-%----------------------------------------------------------------------------------------
-%	HEADING
-%----------------------------------------------------------------------------------------
-
+% ---------- HEADER ----------
 \begin{center}
-    \textbf{\Huge \scshape Ankit Raj} \\ \vspace{3pt}
-    \small Noida, India $|$ \href{tel:9354596935}{+91-9354596935} $|$ 
-    \href{mailto:ankit21311@iiitd.ac.in}{ankit21311@iiitd.ac.in} \\
-    \href{https://www.linkedin.com/in/ankit21311/}{LinkedIn} $|$ 
-    \href{https://github.com/ankit21311}{GitHub} $|$
-    \href{https://leetcode.com/u/ankit21311/}{LeetCode}
+\textbf{\Large \scshape Vaibhav Sharma} \\
+\small Delhi, India $|$
+\href{tel:+917042191731}{+91 7042191731} $|$
+\href{mailto:vaibhavsh0120@gmail.com}{vaibhavsh0120@gmail.com} $|$
+\href{https://github.com/Vaibhav0120}{GitHub} $|$
+\href{https://www.linkedin.com}{LinkedIn}
 \end{center}
 
-%----------------------------------------------------------------------------------------
-%	TECHNICAL SKILLS
-%----------------------------------------------------------------------------------------
-
+% ---------- SKILLS ----------
 \section{Technical Skills}
- \begin{itemize}[leftmargin=0.15in, label={}]
-    \small{\item{
-     \textbf{Languages}{: Python, Java, SQL, JavaScript (ES6+), HTML5, CSS3}  \\
-     \textbf{Frameworks}{: FastAPI, Django, Spring Boot, Flask, Node.js}  \\
-     \textbf{Tools \& Cloud}{: Git, GitHub, Docker, Firebase, Render, Netlify, VS Code, Figma}  \\
-     \textbf{Specialized}{: LLMs (OpenAI, Gemini, Llama), RAG, ChromaDB, BM25 Algorithm, SEO, GA4}  \\
-     \textbf{Core Concepts}{: Data Structures (DSA), OOP, NLP, Web Scraping, Performance Analytics}  
-    }}
- \end{itemize}
+\begin{itemize}[leftmargin=0.15in,label={},itemsep=1pt]
+\small{\item{
+\textbf{Languages:} Python, Java, C++, Dart, JavaScript, SQL \\
+\textbf{Frameworks:} Flutter, React.js, Flask, Firebase, Supabase \\
+\textbf{AI/ML:} TensorFlow, MediaPipe, YOLO, Random Forest, Computer Vision \\
+\textbf{Tools:} Git, GitHub, REST APIs, Cisco Packet Tracer \\
+\textbf{Core CS:} Data Structures, Algorithms, OOP, Networking, Cyber Security
+}}
+\end{itemize}
 
-%----------------------------------------------------------------------------------------
-%	WORK EXPERIENCE
-%----------------------------------------------------------------------------------------
+% ---------- EXPERIENCE ----------
+\section{Experience}
+\resumeSubHeadingListStart
 
-\section{Work Experience}
-  \resumeSubHeadingListStart
+\resumeSubheading
+{Software Engineer Intern}{Sept 2025 -- Nov 2025}
+{Deecogs}{Remote}
+\resumeItemListStart
+\resumeItem{Built real-time sign language recognition pipeline achieving \textbf{92\%+ inference accuracy} using MediaPipe + Random Forest.}
+\resumeItem{Trained medical image segmentation models on Kvasir-SEG improving IoU scores by \textbf{18\%}.}
+\resumeItem{Optimized YOLO inference pipeline reducing detection latency by \textbf{35\%} for CCTV theft monitoring.}
+\resumeItemListEnd
 
-    \resumeSubheading
-      {Senior MarTech Executive}{Oct 2025 -- Dec 2025}
-      {Newparts Inc}{Remote}
-      \resumeItemListStart
-        \resumeItem{Architected data tracking using \textbf{Microsoft Clarity and GA4}, identifying friction points that led to a \textbf{15\% increase} in checkout completion rates.}
-        \resumeItem{Optimized \textbf{Technical SEO} and Core Web Vitals, reducing LCP by \textbf{400ms} and increasing organic search visibility by \textbf{12\%} within 2 months.}
-        \resumeItem{Automated the \textbf{Vehicle Platform Guide (VPG)} generation via Python/Flask, reducing manual effort by \textbf{30+ hours/week} and achieving an \textbf{80\% efficiency gain}.}
-        \resumeItem{Developed 15+ responsive frontend components using JS/CSS, boosting on-page user engagement metrics by \textbf{22\%} across mobile devices.}
-      \resumeItemListEnd
+\resumeSubheading
+{Cisco Networking Internship Trainee}{May 2024 -- Jul 2024}
+{Cisco Academy}{Remote}
+\resumeItemListStart
+\resumeItem{Designed secure enterprise network simulations with routing + firewall rules using Cisco Packet Tracer.}
+\resumeItem{Performed vulnerability analysis and applied mitigation strategies reducing attack surface exposure.}
+\resumeItemListEnd
 
-    \resumeSubheading
-      {AI/ML Consultant}{Jul 2025 -- Aug 2025}
-      {Nexus 3p Foundation}{Remote}
-      \resumeItemListStart
-        \resumeItem{Designed a scalable \textbf{Web Scraping} architecture using FastAPI; processed \textbf{50+ data points daily} with a 99\% success rate on Render.}
-        \resumeItem{Engineered the \textbf{Metabolical Chatbot} using NLP, reducing response latency by \textbf{35\%} and serving \textbf{500+ unique user queries} during pilot phase.}
-      \resumeItemListEnd
+\resumeSubHeadingListEnd
 
-    \resumeSubheading
-      {AI/ML Research Intern}{Apr 2024 -- Jan 2025}
-      {Complex Systems Laboratory, IIIT-Delhi}{New Delhi, India}
-      \resumeItemListStart
-        \resumeItem{Built a RAG-based AI chatbot for \textbf{50,000+ recipes}, achieving \textbf{sub-200ms} semantic search latency using ChromaDB and OpenAI Vector API.}
-        \resumeItem{Implemented a \textbf{LLaMA-based fallback} mechanism, improving query accuracy by \textbf{18\%} when handling ambiguous user prompts.}
-      \resumeItemListEnd
-
-  \resumeSubHeadingListEnd
-
-%----------------------------------------------------------------------------------------
-%	PROJECTS
-%----------------------------------------------------------------------------------------
-
+% ---------- PROJECTS ----------
 \section{Projects}
-  \resumeSubHeadingListStart
+\resumeSubHeadingListStart
 
-    \resumeProjectHeading
-        {\textbf{\href{https://astrology-chatbot.onrender.com/}{Astro Vaani}} $|$ \emph{Python, Gemini API, Node.js, Express, BM25}}{Sept 2025 -- Oct 2025}
-        \resumeItemListStart
-          \resumeItem{Spearheaded a conversational AI solution using \textbf{Prompt Engineering}, resulting in a \textbf{80\% user satisfaction rate} during initial beta testing.}
-          \resumeItem{Built a Flask-based dark-themed UI that supported \textbf{500+ concurrent sessions} with cross-device responsive design.}
-        \resumeItemListEnd
+\resumeProjectHeading
+{\textbf{Vector Shield} $|$ \emph{Flutter, Firebase, IoT, Blynk}}{Hack Heist 2025}
+\resumeItemListStart
+\resumeItem{Developed IoT-based cargo monitoring system tracking real-time weight + GPS across trains.}
+\resumeItem{Automated RFID-based clearance reducing manual verification time by \textbf{40\%}.}
+\resumeItem{Improved monitoring reliability enabling \textbf{real-time tracking for 100+ simulated events}.}
+\resumeItemListEnd
 
-    \resumeProjectHeading
-        {\textbf{\href{https://search-engine-rib1.onrender.com/}{DSA Problems Search Engine}} $|$ \emph{Next.js, TypeScript, Tailwind, BM25}}{Mar 2025 -- May 2025}
-        \resumeItemListStart
-          \resumeItem{Developed a search engine for \textbf{3,000+ problems}, utilizing \textbf{BM25 ranking} to improve search relevance scores by \textbf{25\%} vs standard keyword search.}
-        \resumeItemListEnd
+\resumeProjectHeading
+{\textbf{LifeBeat} $|$ \emph{TensorFlow Lite, Kotlin, Firebase}}{HackStreet 2024}
+\resumeItemListStart
+\resumeItem{Built on-device lung cancer detection app achieving \textbf{89\% classification accuracy}.}
+\resumeItem{Optimized inference for mobile reducing prediction time by \textbf{30\%}.}
+\resumeItemListEnd
 
-  \resumeSubHeadingListEnd
+\resumeProjectHeading
+{\textbf{KrishiDoot} $|$ \emph{React.js, Flask, ML}}{}
+\resumeItemListStart
+\resumeItem{Developed ML-driven crop recommendation system using soil + weather inputs.}
+\resumeItem{Improved recommendation relevance by \textbf{25\%} vs baseline rule-based model.}
+\resumeItemListEnd
 
-%----------------------------------------------------------------------------------------
-%	EDUCATION \& ACHIEVEMENTS
-%----------------------------------------------------------------------------------------
+\resumeProjectHeading
+{\textbf{Campus Care} $|$ \emph{Flutter, Supabase, Razorpay}}{}
+\resumeItemListStart
+\resumeItem{Built cross-platform cafeteria system serving role-based student/staff workflows.}
+\resumeItem{Enabled real-time order updates reducing manual coordination by \textbf{50\%}.}
+\resumeItemListEnd
 
-\section{Education \& Achievements}
-  \resumeSubHeadingListStart
-    \resumeSubheading
-      {Indraprastha Institute of Information Technology Delhi (IIIT-Delhi)}{New Delhi, India}
-      {B.Tech in Computer Science; CGPA: 7.24/10.0}{June 2021 -- June 2025}
-    \resumeItemListStart
-      \resumeItem{\textbf{Japanese Proficiency}: Completed Basic Level ; scored in the \textbf{top 10\%} of Fast Retailing Japanese Language program at IIITD.}
-    \resumeItemListEnd
-  \resumeSubHeadingListEnd
+\resumeSubHeadingListEnd
+
+% ---------- EDUCATION ----------
+\section{Education}
+\resumeSubHeadingListStart
+\resumeSubheading
+{Indraprastha Engineering College}{2023 -- 2027}
+{B.Tech in Computer Science and Engineering}{Ghaziabad, India}
+\resumeSubheading
+{Laxmi Public School}{2022 -- 2023}
+{Class XII (CBSE)}{Physics, Chemistry, Mathematics}
+\resumeSubHeadingListEnd
+
+% ---------- ACHIEVEMENTS ----------
+\section{Achievements}
+\begin{itemize}[leftmargin=0.2in,itemsep=1pt,topsep=1pt]
+\item \small 2nd Runner-Up — Hack Heist 2025 among 50+ teams.
+\item \small 2nd Runner-Up — HackStreet 2024 (AI Healthcare Application).
+\end{itemize}
 
 \end{document}
