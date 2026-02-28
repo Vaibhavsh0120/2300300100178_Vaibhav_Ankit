@@ -1,4 +1,4 @@
-\documentclass[letterpaper,10.8pt]{article}
+\documentclass[letterpaper,11pt]{article}
 
 % ---------- PACKAGES ----------
 \usepackage[empty]{fullpage}
@@ -9,12 +9,16 @@
 \usepackage[english]{babel}
 \usepackage{xcolor}
 \usepackage{tabularx}
-\usepackage{lmodern}
+% Use a clean sans-serif font like Bera Sans (similar crisp geometric feel to Verdana/Tahoma)
+\usepackage[scaled]{berasans}
+\renewcommand{\familydefault}{\sfdefault}
+\usepackage{fontawesome5}
 
 % ---------- LINK SETTINGS ----------
 \hypersetup{
     colorlinks=true,
-    urlcolor=blue
+    urlcolor=black,
+    linkcolor=black
 }
 
 % ---------- ATS MACHINE READABLE ----------
@@ -30,8 +34,8 @@
 \addtolength{\oddsidemargin}{-0.55in}
 \addtolength{\evensidemargin}{-0.55in}
 \addtolength{\textwidth}{1.1in}
-\addtolength{\topmargin}{-0.7in}
-\addtolength{\textheight}{1.45in}
+\addtolength{\topmargin}{-0.75in}
+\addtolength{\textheight}{1.5in}
 
 \raggedright
 \setlength{\tabcolsep}{0in}
@@ -39,7 +43,7 @@
 
 % ---------- SECTION ----------
 \titleformat{\section}{
-  \vspace{-7pt}\scshape\raggedright\normalsize
+  \vspace{-5pt}\scshape\raggedright\Large\bfseries
 }{}{0em}{}[\color{black}\titlerule \vspace{-5pt}]
 
 % ---------- COMMANDS ----------
@@ -48,75 +52,87 @@
 }
 
 \newcommand{\resumeSubheading}[4]{
-  \item
+  \vspace{-1pt}\item
   \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
     \textbf{#1} & #2 \\
     \textit{\small #3} & \textit{\small #4}
-  \end{tabular*}
+  \end{tabular*}\vspace{-5pt}
 }
 
 \newcommand{\resumeProjectHeading}[2]{
-  \item
+  \vspace{-1pt}\item
   \begin{tabular*}{0.97\textwidth}{l@{\extracolsep{\fill}}r}
-    \small #1 & #2
-  \end{tabular*}
+    \textbf{#1} & \textit{\small #2}
+  \end{tabular*}\vspace{-5pt}
 }
 
 \newcommand{\resumeSubHeadingListStart}{
 \begin{itemize}[leftmargin=0.15in,label={},itemsep=2pt,topsep=2pt]
 }
-\newcommand{\resumeSubHeadingListEnd}{\end{itemize}}
+\newcommand{\resumeSubHeadingListEnd}{\end{itemize}\vspace{-2pt}}
 
 \newcommand{\resumeItemListStart}{
 \begin{itemize}[leftmargin=0.2in,itemsep=1pt,topsep=1pt]
 }
-\newcommand{\resumeItemListEnd}{\end{itemize}}
+\newcommand{\resumeItemListEnd}{\end{itemize}\vspace{0pt}}
 
 % ================= DOCUMENT =================
 \begin{document}
 
 % ---------- HEADER ----------
 \begin{center}
-\textbf{\Large \scshape Vaibhav Sharma} \\
-\small Delhi, India $|$
-\href{tel:+917042191731}{+91 7042191731} $|$
-\href{mailto:vaibhavsh0120@gmail.com}{vaibhavsh0120@gmail.com} $|$
-\href{https://github.com/Vaibhav0120}{GitHub} $|$
-\href{https://www.linkedin.com}{LinkedIn}
+    {\Huge \scshape \textbf{Vaibhav Sharma}} \\ \vspace{5pt}
+    \small 
+    \faMapMarker* \hspace{1pt} Delhi, India \hspace{3pt} $|$ \hspace{3pt}
+    \faPhone \hspace{1pt} \href{tel:+917042191731}{+91 7042191731} \hspace{3pt} $|$ \hspace{3pt}
+    \faEnvelope \hspace{1pt} \href{mailto:vaibhavsh0120@gmail.com}{vaibhavsh0120@gmail.com} \hspace{3pt} $|$ \hspace{3pt}
+    \faGithub \hspace{1pt} \href{https://github.com/Vaibhavsh0120}{Vaibhavsh0120} \hspace{3pt} $|$ \hspace{3pt}
+    \faLinkedin \hspace{1pt} \href{https://linkedin.com/in/vaibhavsh0120}{vaibhavsh0120}
 \end{center}
+
+% ---------- EDUCATION ----------
+\section{Education}
+\resumeSubHeadingListStart
+  \resumeSubheading
+    {Indraprastha Engineering College}{2023 -- 2027}
+    {B.Tech in Computer Science and Engineering}{Ghaziabad, India}
+  \resumeSubheading
+    {Laxmi Public School}{2022 -- 2023}
+    {Class XII (CBSE) -- Physics, Chemistry, Mathematics}{Delhi, India}
+\resumeSubHeadingListEnd
 
 % ---------- SKILLS ----------
 \section{Technical Skills}
 \begin{itemize}[leftmargin=0.15in,label={},itemsep=1pt]
-\small{\item{
-\textbf{Languages:} Python, Java, C++, Dart, JavaScript, SQL \\
-\textbf{Frameworks:} Flutter, React.js, Flask, Firebase, Supabase \\
-\textbf{AI/ML:} TensorFlow, MediaPipe, YOLO, Random Forest, Computer Vision \\
-\textbf{Tools:} Git, GitHub, REST APIs, Cisco Packet Tracer \\
-\textbf{Core CS:} Data Structures, Algorithms, OOP, Networking, Cyber Security
-}}
-\end{itemize}
+  \small{\item{
+    \textbf{Languages}{: Python, Java, C++, JavaScript, SQL} \\
+    \textbf{Frameworks}{: Flutter, React.js, Flask, Firebase, Supabase} \\
+    \textbf{AI/ML}{: TensorFlow, MediaPipe, YOLO, Random Forest, Computer Vision} \\
+    \textbf{Tools}{: Git, GitHub, Cisco Packet Tracer} \\
+    \textbf{Core CS}{: Data Structures, Algorithms, OOP, Networking, Cyber Security}
+  }}
+\end{itemize}\vspace{-5pt}
 
 % ---------- EXPERIENCE ----------
 \section{Experience}
 \resumeSubHeadingListStart
 
-\resumeSubheading
-{Software Engineer Intern}{Sept 2025 -- Nov 2025}
-{Deecogs}{Remote}
-\resumeItemListStart
-\resumeItem{Built real-time sign language recognition pipeline achieving \textbf{92\%+ inference accuracy} using MediaPipe + Random Forest.}
-\resumeItem{Trained medical image segmentation models on Kvasir-SEG improving IoU scores by \textbf{18\%}.}
-\resumeItem{Optimized YOLO inference pipeline reducing detection latency by \textbf{35\%} for CCTV theft monitoring.}
-\resumeItemListEnd
+  \resumeSubheading
+    {Software Engineer Intern \href{https://deecogs.com/}{\faLink}}{Sept 2025 -- Nov 2025}
+    {Deecogs}{Remote}
+    \resumeItemListStart
+      \resumeItem{Achieved \textbf{92\%+ inference accuracy} in real-time sign language recognition by engineering a robust pipeline with MediaPipe and Random Forest.}
+      \resumeItem{Improved Intersection over Union (IoU) scores by \textbf{18\%} by training and fine-tuning medical image segmentation models on the Kvasir-SEG dataset.}
+      \resumeItem{Reduced CCTV theft detection latency by \textbf{35\%} by optimizing the YOLO object detection inference pipeline.}
+    \resumeItemListEnd
 
-\resumeSubheading
-{Cisco Networking Internship Trainee}{May 2024 -- Jul 2024}
-{Cisco Academy}{Remote}
-\resumeItemListStart
-\resumeItem{Designed secure enterprise network simulations with routing + firewall rules using Cisco Packet Tracer.}
-\resumeItem{Performed vulnerability analysis and applied mitigation strategies reducing attack surface exposure.}
-\resumeItemListEnd
+  \resumeSubheading
+    {Cisco Networking Internship Trainee \href{https://www.netacad.com/}{\faLink}}{May 2024 -- Jul 2024}
+    {Cisco Academy}{Remote}
+    \resumeItemListStart
+      \resumeItem{Architected a scalable college campus network simulation in Cisco Packet Tracer, securely segmenting isolated VLANs for multiple labs, staff devices, and public student access.}
+      \resumeItem{Minimized attack surface exposure by conducting comprehensive vulnerability analyses and deploying effective mitigation strategies across the simulated network.}
+    \resumeItemListEnd
 
 \resumeSubHeadingListEnd
 
@@ -124,53 +140,35 @@
 \section{Projects}
 \resumeSubHeadingListStart
 
-\resumeProjectHeading
-{\textbf{Vector Shield} $|$ \emph{Flutter, Firebase, IoT, Blynk}}{Hack Heist 2025}
-\resumeItemListStart
-\resumeItem{Developed IoT-based cargo monitoring system tracking real-time weight + GPS across trains.}
-\resumeItem{Automated RFID-based clearance reducing manual verification time by \textbf{40\%}.}
-\resumeItem{Improved monitoring reliability enabling \textbf{real-time tracking for 100+ simulated events}.}
-\resumeItemListEnd
+  \resumeProjectHeading
+    {Vector Shield \href{https://github.com/Vaibhav0120/Vector-Shield}{\faLink} $|$ \emph{\small Flutter, Firebase, IoT, Blynk}}{Hack Heist 2025}
+    \resumeItemListStart
+      \resumeItem{Engineered an IoT-based cargo monitoring system to track real-time weight and GPS metrics across railway networks.}
+      \resumeItem{Reduced manual verification time by \textbf{40\%} by architecting an automated RFID-based clearance workflow.}
+      \resumeItem{Led development and presented the technical architecture to a panel of 5 industry judges, showcasing real-time tracking capabilities.}
+    \resumeItemListEnd
 
-\resumeProjectHeading
-{\textbf{LifeBeat} $|$ \emph{TensorFlow Lite, Kotlin, Firebase}}{HackStreet 2024}
-\resumeItemListStart
-\resumeItem{Built on-device lung cancer detection app achieving \textbf{89\% classification accuracy}.}
-\resumeItem{Optimized inference for mobile reducing prediction time by \textbf{30\%}.}
-\resumeItemListEnd
+  \resumeProjectHeading
+    {LifeBeat \href{https://github.com/Vaibhav0120/LifeBeat}{\faLink} $|$ \emph{\small TensorFlow Lite, Kotlin, Firebase}}{HackStreet 2024}
+    \resumeItemListStart
+      \resumeItem{Achieved \textbf{89\% classification accuracy} in lung cancer detection by building a mobile-optimized, on-device AI application.}
+      \resumeItem{Reduced mobile prediction time by \textbf{30\%} by optimizing TensorFlow Lite inference pipelines for edge deployment.}
+    \resumeItemListEnd
 
-\resumeProjectHeading
-{\textbf{KrishiDoot} $|$ \emph{React.js, Flask, ML}}{}
-\resumeItemListStart
-\resumeItem{Developed ML-driven crop recommendation system using soil + weather inputs.}
-\resumeItem{Improved recommendation relevance by \textbf{25\%} vs baseline rule-based model.}
-\resumeItemListEnd
+  \resumeProjectHeading
+    {KrishiDoot \href{https://github.com/Vaibhav0120/KrishiDoot}{\faLink} $|$ \emph{\small React.js, Flask, ML}}{}
+    \resumeItemListStart
+      \resumeItem{Delivered actionable agricultural insights by developing an ML-driven crop recommendation system utilizing soil and weather data.}
+      \resumeItem{Increased recommendation accuracy and relevance by \textbf{25\%} over baseline rule-based models through advanced machine learning.}
+    \resumeItemListEnd
 
-\resumeProjectHeading
-{\textbf{Campus Care} $|$ \emph{Flutter, Supabase, Razorpay}}{}
-\resumeItemListStart
-\resumeItem{Built cross-platform cafeteria system serving role-based student/staff workflows.}
-\resumeItem{Enabled real-time order updates reducing manual coordination by \textbf{50\%}.}
-\resumeItemListEnd
-
-\resumeSubHeadingListEnd
-
-% ---------- EDUCATION ----------
-\section{Education}
-\resumeSubHeadingListStart
-\resumeSubheading
-{Indraprastha Engineering College}{2023 -- 2027}
-{B.Tech in Computer Science and Engineering}{Ghaziabad, India}
-\resumeSubheading
-{Laxmi Public School}{2022 -- 2023}
-{Class XII (CBSE)}{Physics, Chemistry, Mathematics}
 \resumeSubHeadingListEnd
 
 % ---------- ACHIEVEMENTS ----------
 \section{Achievements}
 \begin{itemize}[leftmargin=0.2in,itemsep=1pt,topsep=1pt]
-\item \small 2nd Runner-Up — Hack Heist 2025 among 50+ teams.
-\item \small 2nd Runner-Up — HackStreet 2024 (AI Healthcare Application).
+  \item \small \textbf{2nd Runner-Up} — Hack Heist 2025 among 50+ participating teams.
+  \item \small \textbf{2nd Runner-Up} — HackStreet 2024 (AI Healthcare Application).
 \end{itemize}
 
 \end{document}
