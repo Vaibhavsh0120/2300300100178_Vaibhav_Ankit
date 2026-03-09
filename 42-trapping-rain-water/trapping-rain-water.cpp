@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int trap(vector<int>& height) {
+    int trap_Brute_Force(vector<int>& height) {
         int n = height.size();
         // Left Max
         vector<int> prefixMax(n);
@@ -28,5 +28,32 @@ public:
 
         return total;
 
+    }
+
+    // 2 pointer
+    int trap(vector<int>& height) {
+        int total = 0;
+
+        int left = 0;
+        int right = height.size() - 1;
+
+        int lmax = -1;
+        int rmax = -1;
+
+        while(left < right) {
+            lmax = max(lmax, height[left]);
+            rmax = max(rmax, height[right]);
+
+            if(lmax < rmax) {
+                total += lmax - height[left];
+                left++;
+            } 
+            else {
+                total += rmax - height[right];
+                right--;
+            }
+        }
+
+        return total;
     }
 };
