@@ -104,8 +104,8 @@ public:
         vector<int> right(heights.size());
 
         //better
-        left = LeftSmallerValue(heights);
-        right = RightSmallerValue(heights);
+        // left = LeftSmallerValue(heights);
+        // right = RightSmallerValue(heights);
 
         //optimal
         findLeftRightSmaller(heights, left, right);
