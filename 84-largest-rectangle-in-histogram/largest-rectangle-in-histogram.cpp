@@ -1,6 +1,5 @@
 class Solution {
 public:
-    // BRUTE FORCE
     int largestRectangleArea_Brute_Force(vector<int>& heights) {
 
         int maxArea = 0;
@@ -23,7 +22,7 @@ public:
         return maxArea;
     }
 
-    //---------------------------------- BETTER
+    //----------------------------------
 
     vector<int> LeftSmallerValue(vector<int>& heights) {
 
@@ -61,54 +60,12 @@ public:
         return ans;
     }
 
-    //---------------------------------------- OPTIMAL
-    // OPTIMIZED CALCULATOR
-    void findLeftRightSmaller(
-        vector<int>& heights,
-        vector<int>& left,
-        vector<int>& right
-    ) {
-        int n = heights.size();
-
-        stack<int> stkL;
-        stack<int> stkR;
-
-        for(int i = 0; i < n; i++) {
-
-            // LEFT SMALLER
-            while(!stkL.empty() && heights[stkL.top()] >= heights[i]) {
-                stkL.pop();
-            }
-
-            left[i] = stkL.empty() ? -1 : stkL.top();
-            stkL.push(i);
-
-
-            // RIGHT SMALLER
-            int j = n - 1 - i;
-
-            while(!stkR.empty() && heights[stkR.top()] >= heights[j]) {
-                stkR.pop();
-            }
-
-            right[j] = stkR.empty() ? n : stkR.top();
-            stkR.push(j);
-        }
-    }
-
     int largestRectangleArea(vector<int>& heights) {
 
         int maxArea = 0;
 
-        vector<int> left(heights.size());
-        vector<int> right(heights.size());
-
-        //better
-        // left = LeftSmallerValue(heights);
-        // right = RightSmallerValue(heights);
-
-        //optimal
-        findLeftRightSmaller(heights, left, right);
+        vector<int> left = LeftSmallerValue(heights);
+        vector<int> right = RightSmallerValue(heights);
 
         for(int i = 0 ; i < heights.size() ; i++) {
             int width = right[i] - left[i] - 1;
