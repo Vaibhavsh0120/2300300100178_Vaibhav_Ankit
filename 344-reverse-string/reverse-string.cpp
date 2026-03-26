@@ -20,7 +20,7 @@ public:
         if (left >= right) {
             return;
         }
-        std::swap(s[left], s[right]);
+        swap(s[left], s[right]);
         reverseHelper(s, left + 1, right - 1);
     }
 
