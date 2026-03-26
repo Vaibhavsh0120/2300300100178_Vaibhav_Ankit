@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int fib(int n) {
+    int simple_fib(int n) {
         // USING STRIVER DP VID 1
 
         if(n <= 1) {
@@ -17,5 +17,14 @@ public:
         }
 
         return prev;
+    }
+
+    // recusion
+    int fib(int n) {
+        if(n <= 1) {
+            return n;
+        }
+
+        return fib(n - 2) + fib(n - 1);
     }
 };
