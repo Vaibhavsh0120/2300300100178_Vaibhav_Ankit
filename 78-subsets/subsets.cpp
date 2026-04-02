@@ -6,10 +6,11 @@ public:
             return;
         }
 
-        curr.push_back(nums[i]);
+        // not take
         solve(i+1, nums, result, curr);
 
-        curr.pop_back();
+        // take
+        curr.push_back(nums[i]);
         solve(i+1, nums, result, curr);
         
     }
