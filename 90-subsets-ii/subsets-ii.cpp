@@ -12,13 +12,13 @@ public:
         curr.pop_back();
 
         // skip duplicates
-        int j = i;
-        while(j + 1 < nums.size() && nums[j] == nums[j + 1]) {
+        int j = i + 1;
+        while(j < nums.size() && nums[j - 1] == nums[j]) {
             j++;
         }
 
         // not take
-        solve(j + 1, nums, curr, result);
+        solve(j , nums, curr, result);
     }
 
     vector<vector<int>> subsetsWithDup(vector<int>& nums) {
