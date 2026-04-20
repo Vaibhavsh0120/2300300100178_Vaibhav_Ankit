@@ -1,33 +1,17 @@
 class Solution {
 public:
-    void Two_Pointer_reverseString(vector<char>& s) {
+    void Reverse(int i, int j, vector<char>& s) {
+        if(i > j) {
+            return;
+        }
         
-        int low = 0;
-        int high = s.size() - 1;
-        int temp;
-
-        while (low < high) {
-            temp = s[low];
-            s[low] = s[high];
-            s[high] = temp;
-
-            low++;
-            high--;
-        }
+        swap(s[i], s[j]);
+        
+        Reverse(++i, --j, s);
     }
 
-    void reverseHelper(std::vector<char>& s, int left, int right) {
-        if (left >= right) {
-            return;
-        }
-        swap(s[left], s[right]);
-        reverseHelper(s, left + 1, right - 1);
-    }
-
-    void reverseString(std::vector<char>& s) {
-        if (s.empty()) {
-            return;
-        }
-        reverseHelper(s, 0, s.size() - 1);
+    void reverseString(vector<char>& s) {
+        Reverse(0, s.size() - 1, s);
+        return;
     }
 };
