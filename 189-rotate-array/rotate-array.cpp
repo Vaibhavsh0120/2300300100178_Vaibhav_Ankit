@@ -1,16 +1,15 @@
 class Solution {
 public:
     void rotate(vector<int>& nums, int k) {
-        if (nums.empty()) return;
+        int n = nums.size();
+        if (n == 0) return; // EDGE CASE: IF EMPTY
 
-        vector<int> result;
-        k = k % nums.size();
+        k %= n;  // EDGE CASE: IF K > N
 
-        int pos = (nums.size() - k) % nums.size();
+        vector<int> result(n);
 
-        for (int i = 0; i < nums.size(); i++) {
-            result.push_back(nums[pos]);
-            pos = (pos + 1) % nums.size();
+        for (int i = 0; i < n; i++) {   // KEEP COUNTING TILL N ARE ADDED
+            result[i] = nums[(n - k + i) % n]; // AUTO GO BACK K TIMES AND THEN KEEP MOVING 1 STEP FORWARD AT A TIME
         }
 
         nums = result;
