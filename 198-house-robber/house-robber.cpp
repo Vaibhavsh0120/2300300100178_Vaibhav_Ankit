@@ -1,8 +1,6 @@
 class Solution {
 public:
-    vector<int> dp;
-
-    int solve(int i,vector<int>&  nums) {
+    int solve(int i, vector<int>& nums, vector<int>& dp) {
         if(i >= nums.size()) {
             return 0;
         }
@@ -11,15 +9,14 @@ public:
             return dp[i];
         }
 
-        int notTake = solve(i + 1, nums);
+        int take = nums[i] + solve(i + 2, nums, dp);
 
-        int Take = nums[i] + solve(i + 2, nums);
+        int nottake = solve(i + 1, nums, dp);
 
-        return dp[i] = max(notTake, Take);
+        return dp[i] = max(take, nottake);
     }
-
     int rob(vector<int>& nums) {
-        dp = vector<int>(nums.size() + 1, -1);
-        return solve(0, nums);
+        vector<int> dp(nums.size() + 1, -1);
+        return solve(0, nums, dp);
     }
 };
