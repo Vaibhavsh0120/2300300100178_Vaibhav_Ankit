@@ -1,6 +1,6 @@
 class Solution {
 public:
-    int arithmeticTriplets_OPTIMIZED(vector<int>& nums, int diff) {
+    int arithmeticTriplets(vector<int>& nums, int diff) {
         /*
             Here the conditions are:
             nums[j] - nums[i] = diff
@@ -24,7 +24,7 @@ public:
         return count;
     }
 
-    int arithmeticTriplets(vector<int>& nums, int diff) {
+    int arithmeticTriplets_BRUTEFORCE(vector<int>& nums, int diff) {
         int count = 0;
 
         for (int i = 0; i < nums.size(); i++) {
