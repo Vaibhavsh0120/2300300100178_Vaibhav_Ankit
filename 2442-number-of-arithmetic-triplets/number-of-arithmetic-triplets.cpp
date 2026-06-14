@@ -26,36 +26,16 @@ public:
 
     int arithmeticTriplets(vector<int>& nums, int diff) {
         int count = 0;
-        int n = nums.size();
 
-        for (int i = 0; i < n - 2; i++) {
-            int left = i + 1;
-            int right = left + 1;
-
-            while (left < n && right < n) {
-
-                if (nums[left] - nums[i] < diff) {
-                    left++;
-                    if (right <= left)
-                        right = left + 1;
-                }
-                else if (nums[left] - nums[i] > diff) {
-                    break;
-                }
-                else {
-                    // first condition satisfied
-                    if (nums[right] - nums[left] < diff) {
-                        right++;
-                    }
-                    else if (nums[right] - nums[left] > diff) {
-                        left++;
-                        if (right <= left)
-                            right = left + 1;
-                    }
-                    else {
-                        count++;
-                        left++;
-                        right++;
+        for (int i = 0; i < nums.size(); i++) {
+            for (int j = i + 1; j < nums.size(); j++) {
+                // CONDITION 1 SATISFIED
+                if (nums[j] - nums[i] == diff) {
+                    for (int k = j + 1; k < nums.size(); k++) {
+                        // CONDITION 2 SATISFIED
+                        if (nums[k] - nums[j] == diff) {
+                            count++;
+                        }
                     }
                 }
             }
