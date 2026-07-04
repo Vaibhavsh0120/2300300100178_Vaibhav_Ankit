@@ -4,49 +4,49 @@
  *     int val;
  *     ListNode *next;
  *     ListNode() : val(0), next(nullptr) {}
- *     ListNode(int x) : val(x), next(nullptr) {}
+ *     ListNode(int x) : val(0), next(nullptr) {}
  *     ListNode(int x, ListNode *next) : val(x), next(next) {}
  * };
  */
 class Solution {
 public:
     ListNode* rotateRight(ListNode* head, int k) {
-
-        if(!head) {
+        if(head == nullptr || head->next == nullptr || k == 0) {
             return head;
         }
-        
-        // LL to V
-        vector<int> v;
-        ListNode* cur = head;
 
-        while(cur) {
-            v.push_back(cur->val);
-            cur = cur->next;
+        int size = 1;
+        ListNode* curr = head;
+
+        // Find the tail and the size
+        while(curr->next) {
+            size++;
+            curr = curr->next;
         }
 
-        // working
+        k %= size;
 
-        vector<int> soln;
-        k = k % v.size(); // safety
-        int i = v.size() - k; // starting index
-        while(soln.size() != v.size()) {
-            i = i % v.size();
-            soln.push_back(v[i]);
-            i++;
+        if(k == 0) {
+            return head;
         }
 
-        // back to LL
+        // Make the list circular
+        curr->next = head;
 
-        i = 0;
-        cur = head;
-        while(cur) {
-            cur->val = soln[i];
-            i++;
-            cur = cur->next;
+        // Move to the new tail
+        int steps = size - k - 1;
+        curr = head;
+
+        while(steps--) {
+            curr = curr->next;
         }
+
+        // New head
+        head = curr->next;
+
+        // Break the circle
+        curr->next = nullptr;
 
         return head;
-         
     }
 };
