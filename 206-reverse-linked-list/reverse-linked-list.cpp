@@ -11,24 +11,25 @@
 class Solution {
 public:
     ListNode* reverseList(ListNode* head) {
-        stack<int> stk;
-            
-        ListNode* temp = head;
+        /*
+        1. - convert to array then solve
+        2. - Use stack to save value and traverse again
+        3. - 3 ptr prev, curr, next only 1 traversal
+        */
 
-        // fill stack
-        while(temp != nullptr) {
-            stk.push(temp->val);
-            temp = temp->next;
+        ListNode* prev = nullptr;
+        ListNode* curr = head;
+        ListNode* next = nullptr;
+
+        while(curr) {
+            next = curr->next;
+            curr->next = prev;
+
+            prev = curr;
+            curr = next;
+           
         }
 
-        // use stack
-        temp = head;
-        while(temp != nullptr) {
-            temp->val = stk.top();
-            stk.pop();
-            temp = temp->next;
-        }
-
-        return head;
+        return  prev;
     }
 };
