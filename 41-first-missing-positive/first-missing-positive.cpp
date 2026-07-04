@@ -1,19 +1,23 @@
 class Solution {
 public:
     int firstMissingPositive(vector<int>& nums) {
-        // SOLN 1 O(NlogN)
+        // SOLN 2 TIME O(N) - SPACE O(N)
 
-        sort(nums.begin(), nums.end());
+        unordered_set<int> st(nums.begin(), nums.end());
 
-        int missing = 1;
+        int missing = -1;
 
-        for(int i = 0 ; i < nums.size() ; i++) {
-            if(nums[i] > 0 && nums[i] == missing) { // if number is +ve and we find it in array
-                missing++;
-            }
-            else if(missing < nums[i]) { // if no smaller solution ahead
+        // smallest +ve ans ; what is array is natural number
+        for(int i = 1 ; i < nums.size() + 1 ; i++) {
+            if(!st.count(i)) { // number not found in set
+                missing = i;
                 break;
             }
+        }
+
+        // if array is natural number
+        if(missing == -1) {
+            missing = nums.size() + 1;
         }
 
         return missing;
