@@ -12,8 +12,10 @@
 class Solution {
 public:
     Node* flatten(Node* head) {
-        if (head == nullptr)
+        // if empty
+        if (head == nullptr) {
             return nullptr;
+        }
 
         vector<int> v;
         stack<Node*> stk;
@@ -21,23 +23,30 @@ public:
         stk.push(head);
 
         while (!stk.empty()) {
+            // continue after child
             Node* curr = stk.top();
             stk.pop();
 
+            // continue forward
             while (curr) {
                 v.push_back(curr->val);
 
+                //if child, save next in start
                 if (curr->child) {
-                    if (curr->next)
+                    if (curr->next) {
                         stk.push(curr->next);
+                    }
 
                     curr = curr->child;
-                } else {
+                } 
+                // else keep moving forward
+                else {
                     curr = curr->next;
                 }
             }
         }
 
+        // New Linked List Head
         Node* newHead = new Node();
         newHead->val = v[0];
         newHead->prev = nullptr;
@@ -46,6 +55,7 @@ public:
 
         Node* curr = newHead;
 
+        // fill that linked list with vector
         for (int i = 1; i < v.size(); i++) {
             Node* temp = new Node();
             temp->val = v[i];
