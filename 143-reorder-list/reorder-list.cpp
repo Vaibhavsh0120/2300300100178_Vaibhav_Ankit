@@ -10,57 +10,72 @@
  */
 class Solution {
 public:
-    void reorderList(ListNode* head) {
-        /*
-        1. Find the middle and split.
-        2. Reverse the second half.
-        3. Merge alternately.
-        */
-        if (head == nullptr || head->next == nullptr) {
-            return;
+    void mergeAlternate(ListNode* one, ListNode* two) {
+
+        ListNode* onePtr = one;
+        ListNode* twoPtr = two;
+
+        while (onePtr && twoPtr) {
+            ListNode* oneNext = onePtr->next;
+            ListNode* twoNext = twoPtr->next;
+
+            onePtr->next = twoPtr;
+            twoPtr->next = oneNext;
+
+            onePtr = oneNext;
+            twoPtr = twoNext;
         }
-    
-        // Find middle
+
+        return;
+    }
+
+    ListNode* reverse(ListNode* head) {
+        ListNode* prev = nullptr;
+        ListNode* curr = head;
+        ListNode* next = nullptr;
+
+        while(curr) {
+            next = curr->next;
+
+            curr->next = prev;
+
+            prev = curr;
+            curr = next;
+        }
+
+        return prev;
+    }
+
+    ListNode* findMiddle(ListNode* head) {
         ListNode* slow = head;
         ListNode* fast = head;
-        ListNode* prev = nullptr;
-    
-        while(fast && fast->next) {
-            prev = slow;
+
+        // stop one before middle, so we can disconnect later
+        while (fast->next && fast->next->next) {
             slow = slow->next;
             fast = fast->next->next;
         }
-    
-        // Split into two halves
-        prev->next = nullptr;
-    
-        // Reverse second half
-        ListNode* second = nullptr;
-        ListNode* curr = slow;
-    
-        while(curr) {
-            ListNode* next = curr->next;
-            curr->next = second;
-            second = curr;
-            curr = next;
+
+        ListNode* second = slow->next;
+        slow->next = nullptr;   // disconnect
+
+        return second;
+    }
+
+    void reorderList(ListNode* head) {
+        if (!head || !head->next) {
+            return;
         }
-    
-        // Merge alternately
-        ListNode* first = head;
-    
-        while(first && second) {
-            ListNode* t1 = first->next;
-            ListNode* t2 = second->next;
-    
-            first->next = second;
-    
-            if (t1 == nullptr)
-                break;
-    
-            second->next = t1;
-    
-            first = t1;
-            second = t2;
-        }
+        
+        // split and return middle 
+        ListNode* secondList = findMiddle(head);
+
+        // reverse
+        secondList = reverse(secondList);
+
+        // merge
+        mergeAlternate(head, secondList);
+
+        return;
     }
 };
