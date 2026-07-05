@@ -31,6 +31,10 @@ public:
 
         ListNode* dummy = new ListNode(0, head);
 
+        // [d]-{ [1]-[2]-[3] }-[4]-[5]  -- K = 3
+        //  ^     ^   -   ^     ^  
+        // PG    FN      Kth    NG
+
         ListNode* prevGroup = dummy;
         ListNode* nextGroup = nullptr;
 
