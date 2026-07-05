@@ -2,10 +2,9 @@ class Solution {
 public:
     ListNode* deleteDuplicates(ListNode* head) {
         // ready to delete head node if duplicate
-        ListNode dummy(0);
-        dummy.next = head;
+        ListNode* dummy = new ListNode(0, head);
 
-        ListNode* prev = &dummy;
+        ListNode* prev = dummy;
         ListNode* curr = head;
 
         while (curr) {
@@ -28,6 +27,6 @@ public:
             }
         }
 
-        return dummy.next;
+        return dummy->next;
     }
 };
