@@ -11,36 +11,56 @@
 class Solution {
 public:
     void reorderList(ListNode* head) {
-        ListNode* curr = head;
-        vector<int> v;
-        // to vector
+        /*
+        1. Find the middle and split.
+        2. Reverse the second half.
+        3. Merge alternately.
+        */
+        if (head == nullptr || head->next == nullptr) {
+            return;
+        }
+    
+        // Find middle
+        ListNode* slow = head;
+        ListNode* fast = head;
+        ListNode* prev = nullptr;
+    
+        while(fast && fast->next) {
+            prev = slow;
+            slow = slow->next;
+            fast = fast->next->next;
+        }
+    
+        // Split into two halves
+        prev->next = nullptr;
+    
+        // Reverse second half
+        ListNode* second = nullptr;
+        ListNode* curr = slow;
+    
         while(curr) {
-            v.push_back(curr->val);
-            curr = curr->next;
+            ListNode* next = curr->next;
+            curr->next = second;
+            second = curr;
+            curr = next;
         }
-
-        // work
-
-        int i = 0;
-        int j = v.size() - 1;
-
-        vector<int> ans;
-        while(i <= j) {
-            ans.push_back(v[i]);
-            ans.push_back(v[j]);
-            i++;
-            j--;
+    
+        // Merge alternately
+        ListNode* first = head;
+    
+        while(first && second) {
+            ListNode* t1 = first->next;
+            ListNode* t2 = second->next;
+    
+            first->next = second;
+    
+            if (t1 == nullptr)
+                break;
+    
+            second->next = t1;
+    
+            first = t1;
+            second = t2;
         }
-
-        // to linked list
-        i = 0;
-        curr = head;
-        while(curr) {
-            curr->val = ans[i];
-            i++;
-            curr = curr->next;
-        }
-
-        return;
     }
 };
