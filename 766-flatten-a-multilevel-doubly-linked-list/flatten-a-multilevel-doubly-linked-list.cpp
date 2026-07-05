@@ -12,41 +12,42 @@
 class Solution {
 public:
     Node* flatten(Node* head) {
-        // if empty
-        if (head == nullptr) {
+        if (head == nullptr)
             return nullptr;
-        }
 
-        vector<int> v;
+        vector<int> v; // save answer
         stack<Node*> stk;
 
+        // to save node if child found
         stk.push(head);
 
         while (!stk.empty()) {
-            // continue after child
             Node* curr = stk.top();
             stk.pop();
 
-            // continue forward
+            // keep continue forward and down
             while (curr) {
+                // Keep pushing curr
                 v.push_back(curr->val);
-
-                //if child, save next in start
+                
+                // if curr has child, save next in stack
                 if (curr->child) {
                     if (curr->next) {
                         stk.push(curr->next);
                     }
-
+                    
+                    // go to that child
                     curr = curr->child;
-                } 
-                // else keep moving forward
-                else {
+                } else {
+                    // keep continue till nullptr
                     curr = curr->next;
                 }
             }
+
+            // layer remain in stack, it will continue
         }
 
-        // New Linked List Head
+        // create new Linked List according to Vector
         Node* newHead = new Node();
         newHead->val = v[0];
         newHead->prev = nullptr;
@@ -55,14 +56,15 @@ public:
 
         Node* curr = newHead;
 
-        // fill that linked list with vector
         for (int i = 1; i < v.size(); i++) {
+            //setup new node
             Node* temp = new Node();
             temp->val = v[i];
             temp->prev = curr;
             temp->next = nullptr;
             temp->child = nullptr;
 
+            // set and move prev node
             curr->next = temp;
             curr = temp;
         }
