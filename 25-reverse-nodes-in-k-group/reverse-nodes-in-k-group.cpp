@@ -33,13 +33,12 @@ public:
 
         // [d]-{ [1]-[2]-[3] }-[4]-[5]  -- K = 3
         //  ^     ^   -   ^     ^  
-        // PG    FN      Kth    NG
+        // pG    fN      rH    nG
 
         ListNode* prevGroup = dummy;
         ListNode* nextGroup = nullptr;
 
         ListNode* firstNode = head;
-        ListNode* KthNode = nullptr;
 
         ListNode* curr = head;
 
@@ -47,14 +46,14 @@ public:
 
             // reach kth node
             for (int i = 1; i < k; i++) {
-                if (curr == nullptr || curr->next == nullptr)
+                if (curr == nullptr || curr->next == nullptr) { // if not enough k nodes
                     return dummy->next;
+                }
 
                 curr = curr->next;
             }
 
             // set variables
-            KthNode = curr;
             nextGroup = curr->next;
 
             // break link
