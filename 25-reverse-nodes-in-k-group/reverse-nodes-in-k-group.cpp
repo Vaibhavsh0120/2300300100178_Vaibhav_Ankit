@@ -10,30 +10,64 @@
  */
 class Solution {
 public:
+    ListNode* reverse(ListNode* head) {
+        ListNode* prev = nullptr;
+        ListNode* curr = head;
+        ListNode* next = nullptr;
+
+        while (curr) {
+            next = curr->next;
+
+            curr->next = prev;
+
+            prev = curr;
+            curr = next;
+        }
+
+        return prev;
+    }
+
     ListNode* reverseKGroup(ListNode* head, int k) {
-        vector<int> v;
+
+        ListNode* dummy = new ListNode(0, head);
+
+        ListNode* prevGroup = dummy;
+        ListNode* nextGroup = nullptr;
+
+        ListNode* firstNode = head;
+        ListNode* KthNode = nullptr;
 
         ListNode* curr = head;
 
-        while(curr) {
-            v.push_back(curr->val);
-            curr = curr->next;
-        }
+        while (curr) {
 
-        for(int i = 0 ; i < v.size() ; i+=k) {
-            if(v.size() < i+k) {   // no need to reverse last remaining elt
-                break;
+            // reach kth node
+            for (int i = 1; i < k; i++) {
+                if (curr == nullptr || curr->next == nullptr)
+                    return dummy->next;
+
+                curr = curr->next;
             }
 
-            reverse(v.begin() + i, v.begin() + i + k);
+            // set variables
+            KthNode = curr;
+            nextGroup = curr->next;
+
+            // break link
+            curr->next = nullptr;
+
+            ListNode* reversedHead = reverse(firstNode);
+
+            // link back
+            prevGroup->next = reversedHead;
+            firstNode->next = nextGroup;
+
+            // move ahead
+            prevGroup = firstNode;
+            firstNode = nextGroup;
+            curr = nextGroup;
         }
 
-        curr = head;
-        for(int i = 0 ; i < v.size() ; i++) {
-            curr->val = v[i];
-            curr = curr->next;
-        }
-
-        return head;
+        return dummy->next;
     }
 };
