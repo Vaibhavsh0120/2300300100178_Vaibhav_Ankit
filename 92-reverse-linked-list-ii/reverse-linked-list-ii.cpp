@@ -10,27 +10,67 @@
  */
 class Solution {
 public:
+    public:
+    void reverse(ListNode* head) {
+        ListNode* prev = nullptr;
+        ListNode* curr = head;
+        ListNode* next = nullptr;
+
+        while (curr) {
+            next = curr->next;
+
+            curr->next = prev;
+
+            prev = curr;
+            curr = next;
+        }
+
+        // return prev;
+        return;
+    }
+
     ListNode* reverseBetween(ListNode* head, int left, int right) {
         
-        ListNode* curr = head;
-        vector<int> v;
+        ListNode* dummy = new ListNode(0, head);
 
+        ListNode* preLeftPtr = dummy;
+        ListNode* leftPtr = nullptr;
+        ListNode* rightPtr = nullptr;
+        ListNode* postRightPtr = nullptr;
+
+        ListNode* curr = dummy;
+
+        int pos = 0;
+
+        // find preLeftPtr, leftPtr and rightPtr, postRightPtr
         while(curr) {
-            v.push_back(curr->val);
+            // 1  before left found
+            if (pos == left - 1) {
+                preLeftPtr = curr;
+                leftPtr = curr->next;
+            }
+
+            // right found
+            if (pos == right) {
+                rightPtr = curr;
+                postRightPtr = curr->next;
+                break;
+            }
+
             curr = curr->next;
+            pos++;
         }
 
-        reverse(v.begin() + left - 1, v.begin() + right);
+        // break link
+        rightPtr->next = nullptr;
 
-        curr = head;
-        int i = 0;
-        while(curr) {
-            curr->val = v[i];
-            curr = curr->next;
-            i++;
-        }
+        // reverse
+        reverse(leftPtr);
 
-        return head;
-        
+        // link back
+        preLeftPtr->next = rightPtr;
+        leftPtr->next = postRightPtr;
+
+        return dummy->next;
     }
 };
