@@ -11,36 +11,33 @@
  */
 class Solution {
 public:
+    vector<int> ans;
+
+    void ReversePreOrderTraversal(TreeNode* root, int level) {
+        // normal   -> Root Left Right
+        // Reverse - > Root [Right] Left
+
+        if(root == nullptr) {
+            return;
+        }
+
+        // if we are seeing first ever element of this level
+        // ans will store 1 element pre level
+        if(level > ans.size()) {
+            ans.push_back(root->val);
+        }
+
+        ReversePreOrderTraversal(root->right, level + 1);
+        ReversePreOrderTraversal(root->left, level + 1);
+
+    }
+
     vector<int> rightSideView(TreeNode* root) {
-        vector<int> soln;
+        // Using every first element of reverse Pre Order traversal
 
-        if (root == nullptr) {
-            return soln;
-        }
+        ReversePreOrderTraversal(root, 1);
 
-        queue<TreeNode*> q;
-        q.push(root);
+        return ans;
 
-        while (!q.empty()) {
-            int sizeOfLevel = q.size();
-            vector<int> currLevel;
-
-            for (int i = 0; i < sizeOfLevel; i++) {
-                TreeNode* curr = q.front();
-                q.pop();
-
-                currLevel.push_back(curr->val);
-
-                if (curr->left)
-                    q.push(curr->left);
-
-                if (curr->right)
-                    q.push(curr->right);
-            }
-
-            soln.push_back(currLevel[currLevel.size() - 1]);
-        }
-
-        return soln;
     }
 };
