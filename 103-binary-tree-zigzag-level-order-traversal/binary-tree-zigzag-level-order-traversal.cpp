@@ -12,44 +12,50 @@
 class Solution {
 public:
     vector<vector<int>> zigzagLevelOrder(TreeNode* root) {
-        int levelCount = 0;
-        vector<vector<int>> soln;
-
-        if (root == nullptr) {
-            return soln;
+        if(root == nullptr) {
+            return {};
         }
+
+        vector<vector<int>> ans;
 
         queue<TreeNode*> q;
+
+        int currLevel = 0;
+
         q.push(root);
 
-        while (!q.empty()) {
-            levelCount++;
-            int sizeOfLevel = q.size();
-            vector<int> currLevel;
+        while(!q.empty()) {
+            // current level
+            currLevel++;
 
-            for (int i = 0; i < sizeOfLevel; i++) {
-                TreeNode* curr = q.front();
+            // no of element in curr level
+            int currLevelSize = q.size();
+
+            // curr level elements
+            vector<int> currLevelElt;
+
+            for(int i = 0 ; i < currLevelSize ; i++) {
+                TreeNode* node = q.front();
                 q.pop();
 
-                currLevel.push_back(curr->val);
+                if(node->left != nullptr) {
+                    q.push(node->left);
+                }
 
-                if (curr->left)
-                    q.push(curr->left);
+                if(node->right != nullptr) {
+                    q.push(node->right);
+                }
 
-                if (curr->right)
-                    q.push(curr->right);
+                currLevelElt.push_back(node->val);
             }
 
-            // CHANGE DIRECTION (ELSE EXACT SAME AS 102)
-            if(levelCount % 2 != 0) {
-                soln.push_back(currLevel);
+            if(currLevel % 2 == 0) {
+                reverse(currLevelElt.begin(), currLevelElt.end());
             }
-            else {
-                reverse(currLevel.begin(), currLevel.end());
-                soln.push_back(currLevel);
-            }
+
+            ans.push_back(currLevelElt);
         }
 
-        return soln;
+        return ans;
     }
 };
