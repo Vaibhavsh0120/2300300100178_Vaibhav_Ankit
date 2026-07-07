@@ -4,23 +4,26 @@ public:
         int maxSum = INT_MIN;
         int currSum = 0;
 
-        // window fit
-        for(int i = 0 ; i < k ; i++) {
-            currSum+=nums[i];
-        }
+        int right = 0;
+        int left = 0;
+
+        while(right < k) {
+            currSum += nums[right];
+            right++;
+        } 
 
         maxSum = max(maxSum, currSum);
 
-        for(int right = k ; right < nums.size() ; right++) {
-            // update window sum
+        while(right < nums.size()) {
             currSum += nums[right];
-            currSum -= nums[right-k];
+            currSum -= nums[left];
 
-            // check max
+            left++;
+            right++;
+
             maxSum = max(maxSum, currSum);
         }
 
         return (double)maxSum/k;
-
     }
 };
