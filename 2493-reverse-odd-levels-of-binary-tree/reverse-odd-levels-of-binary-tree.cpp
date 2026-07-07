@@ -11,20 +11,17 @@
  */
 class Solution {
 public:
-    void swapBranch(TreeNode* left, TreeNode* right, int level) {
-        // base case
+    void swapper(TreeNode* left, TreeNode* right, int level) {
         if(left == nullptr || right == nullptr) {
             return;
         }
 
-
-        // swap if odd level
         if(level % 2 != 0) {
             swap(left->val, right->val);
         }
 
-        swapBranch(left->left, right->right, level + 1);
-        swapBranch(left->right, right->left, level + 1);
+        swapper(left->right, right->left, level + 1);
+        swapper(left->left, right->right, level + 1);
     }
 
     TreeNode* reverseOddLevels(TreeNode* root) {
@@ -32,7 +29,8 @@ public:
             return root;
         }
 
-        swapBranch(root->left, root->right, 1);
+        swapper(root->left, root->right, 1);
+
         return root;
     }
 };
