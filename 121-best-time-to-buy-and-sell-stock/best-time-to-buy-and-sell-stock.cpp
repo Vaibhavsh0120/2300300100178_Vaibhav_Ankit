@@ -1,19 +1,15 @@
 class Solution {
 public:
-    int profit(int mini, int i, vector<int>& prices, int maxPrt) {
-        if(i == prices.size()) {
-            return maxPrt;
+    int maxProfit(vector<int>& prices) {
+        int minPriceYet = prices[0];
+        int maxP = 0;
+
+        for(int i = 0 ; i < prices.size() ; i++) {
+            minPriceYet = min(minPriceYet, prices[i]);
+            int profit = prices[i] - minPriceYet;
+            maxP = max(maxP, profit);
         }
 
-        int curPrt = prices[i] - mini;
-        maxPrt = max(maxPrt, curPrt);
-        mini = min(mini, prices[i]);
-
-        return profit(mini, ++i, prices, maxPrt);
-    }
-
-    int maxProfit(vector<int>& prices) {
-        return profit(prices[0], 1, prices, 0);
-
+        return maxP;
     }
 };
