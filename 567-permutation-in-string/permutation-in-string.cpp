@@ -38,7 +38,7 @@ public:
 
             // reached window size
             if(r - l + 1 == windowSize) {
-                // both window dont have same frequency elements
+                // both window have same frequency elements -- Permutation in String found!!
                 if(permutationCheck(original, mixed)) {
                     return true;
                 }
