@@ -1,21 +1,28 @@
 class Solution {
 public:
     int subarraySum(vector<int>& nums, int k) {
-        int ans = 0;
+        // Store prefixSum in the hashmap
+        
+        int count = 0;
 
-        // all possible subarray
-        for(int i = 0 ; i < nums.size() ; i++) {
-            int currSum = 0;
-            for(int j = i ; j < nums.size() ; j++) {
-                currSum += nums[j];
+        unordered_map<int, int> mp;
+        int prefixSum = 0;
 
-                // if curr subarray have sum == k
-                if(currSum == k) {
-                    ans++;
-                }
+        mp[0] = 1;
+
+        for(int n : nums) {
+            // calculate prefixsum
+            prefixSum += n;
+
+            // check in hashmap
+            if(mp.count(prefixSum - k)) {
+                count+= mp[prefixSum - k];
             }
+
+            // update hashmap
+            mp[prefixSum]++;
         }
 
-        return ans;
+        return count;
     }
 };
