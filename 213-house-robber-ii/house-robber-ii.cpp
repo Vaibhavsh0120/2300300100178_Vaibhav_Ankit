@@ -1,34 +1,38 @@
 class Solution {
 public:
-    int solve(int i, int end, vector<int>& nums, vector<vector<int>>& dp) {
-        if(end < i) {   // we can count last house, cause we remove \0 in rob fn
+    vector<int> dp;
+
+    int solve(int i, const vector<int>& nums) {
+        // base case
+        if(i >= nums.size()) {
             return 0;
         }
 
-        if(dp[i][end] != -1) {
-            return dp[i][end];
+        // dp
+        if(dp[i] != -1) {
+            return dp[i];
         }
 
-        int take = nums[i] + solve(i + 2, end, nums, dp); // take money, skip 1 house
+        // working
+        int take = nums[i] + solve(i + 2, nums);
+        int notTake = solve(i + 1, nums);
 
-        int nottake = solve(i + 1, end, nums, dp); // dont take money, go to next house
-
-        return dp[i][end] = max(take, nottake);
+        // return
+        return dp[i] = max(take, notTake);
     }
 
     int rob(vector<int>& nums) {
+        // single element edge case
         if(nums.size() == 1) {
             return nums[0];
         }
+        
+        dp.assign(nums.size() + 1, -1);
+        int withoutFirst = solve(0, vector<int>(nums.begin() + 1, nums.end()));
 
-        vector<vector<int>> dp(nums.size() + 1, vector<int>(nums.size() + 1, -1));
+        dp.assign(nums.size() + 1, -1);
+        int withoutLast = solve(0, vector<int>(nums.begin(), nums.end() - 1));
 
-        // (0 - 2 - 4) -     even jump sequence
-        int case1 = solve(0, nums.size() - 2, nums, dp);    // -2 -> remove last house(cause adjacent) and \0 (eof)
-
-        //  - (1 - 3 - 5)    odd jump sequence
-        int case2 = solve(1, nums.size() - 1, nums, dp);    // -1 -> remove \0
-
-        return max(case1, case2);
+        return max(withoutFirst, withoutLast);
     }
 };
