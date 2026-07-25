@@ -1,28 +1,24 @@
 class Solution {
 public:
-    int solve(int n, vector<int>& dp) {
-        if(n == 1 || n == 2) { // valid jump which reach end
-            return n;   // no of possible sequence
+    vector<int> dp;
+
+    int climbStairs(int n) {
+        // make dp if not exist
+        if (dp.empty()) {
+            dp.assign(n + 1, -1);
         }
 
-        if(n <= 0) {    // invalid jump
-            return 0;
+        // base case
+        if(n == 1 || n == 2) {
+            return n;
         }
 
-        // dp
-        if (dp[n] != -1) {
+        // memo
+        if(dp[n] != -1) {
             return dp[n];
         }
 
-        int jump = solve(n - 1, dp);
-
-        int longjump = solve(n -2, dp);
-
-        return dp[n] = jump + longjump;
-    }
-
-    int climbStairs(int n) {
-        vector<int> dp(n + 1, -1);
-        return solve(n, dp);
+        // return
+        return dp[n] = climbStairs(n-1) + climbStairs(n-2);
     }
 };
