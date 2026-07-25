@@ -14,11 +14,14 @@ public:
         
         vector<int> nums = numToArr(n);
 
+        int lastLargest = nums[0];
         int maxProd = 0;
 
-        for(int i = 0 ; i < nums.size() ; i++) {
-            for(int j = i + 1 ; j < nums.size() ; j++) {
-                maxProd = max(maxProd, nums[i] * nums[j]);
+        for(int i = 1 ; i < nums.size() ; i++) {
+            maxProd = max(maxProd, nums[i] * lastLargest);
+
+            if(nums[i] > lastLargest) {
+                lastLargest = nums[i];
             }
         }
 
