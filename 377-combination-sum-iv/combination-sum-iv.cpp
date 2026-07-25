@@ -1,16 +1,23 @@
 class Solution {
 public:
+
     vector<int> dp;
 
-    int solve(vector<int>& nums, int target) {
-        // base case
+    int combinationSum4(vector<int>& nums, int target) {
+        // init dp first time
+        if(dp.size() == 0) {
+            dp.assign(target + 1, -1);
+        }
+
+        // correct case
         if(target == 0) {
             return 1;
         }
-        // wrong case 
-         if (target < 0) {
+
+        // wrong case
+        if(target < 0) {
             return 0;
-         }
+        }
 
         // memo
         if(dp[target] != -1) {
@@ -18,17 +25,12 @@ public:
         }
 
         // working
-        int ways = 0;
-
-        for (int num : nums) {
-            ways += solve(nums, target - num);
+        long long ans = 0;
+        for(int i = 0 ; i < nums.size() ; i++) {
+            ans += combinationSum4(nums, target - nums[i]);
         }
 
-        return dp[target] = ways;
-    }
-
-    int combinationSum4(vector<int>& nums, int target) {
-        dp.assign(target + 1, -1);
-        return solve(nums, target);
+        // return
+        return dp[target] = ans; 
     }
 };
