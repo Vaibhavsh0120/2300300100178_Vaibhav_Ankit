@@ -1,34 +1,28 @@
 class Solution {
 public:
-    // new form of dp
-    vector<unordered_map<int,int>> dp;
+    // wont work cause target can be -ve
+    // vector<vector<int>> dp;
+    vector<unordered_map<int, int>> dp;
 
-    int ways(int i, vector<int>& nums, int target) {
-        // Base case
-        if(i == nums.size() && target == 0) {
-            return 1;
+    int solve(int i, vector<int>& nums, int target) {
+        // base
+        if(i == nums.size()) {
+            return target == 0 ? 1 : 0;
         }
 
-        if(i == nums.size() && target != 0) {
-            return 0;
-        }
-
-        // Memoization
-        if (dp[i].count(target)) {
+        // hashmap dp
+        if(dp[i].count(target)) {
             return dp[i][target];
         }
 
-        // Recursive calls
-        int posi = ways(i+1, nums, target + nums[i]);
-        int nega = ways(i+1, nums, target - nums[i]);
+        int posi = solve(i + 1, nums, target + nums[i]);
+        int nega = solve(i + 1, nums, target - nums[i]);
 
-        // Store and return
         return dp[i][target] = posi + nega;
     }
-
     int findTargetSumWays(vector<int>& nums, int target) {
-        dp.resize(nums.size());
+        dp.resize(nums.size() + 1);
 
-        return ways(0, nums, target);
+        return solve(0, nums, target);
     }
 };
