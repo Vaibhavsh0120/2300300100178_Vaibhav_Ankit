@@ -2,24 +2,27 @@ class Solution {
 public:
     vector<int> dp;
 
-    int helper(int i, vector<int>& nums){
+    int solve(int i, vector<int>& nums) {
         // base case
         if(i >= nums.size()) {
             return 0;
         }
 
+        // dp
         if(dp[i] != -1) {
             return dp[i];
         }
 
-        int taken = nums[i] + helper(i+2, nums);
-        int notTaken = helper(i+1, nums);
+        // working
+        int take = nums[i] + solve(i + 2, nums);
+        int notTake = solve(i + 1, nums);
 
-        return dp[i] = max(taken, notTaken);
+        // return
+        return dp[i] = max(take, notTake);
     }
 
     int rob(vector<int>& nums) {
         dp.assign(nums.size() + 1, -1);
-        return helper(0, nums);
+        return solve(0, nums);
     }
 };
