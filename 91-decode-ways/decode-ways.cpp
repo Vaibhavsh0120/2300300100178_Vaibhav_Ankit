@@ -1,33 +1,36 @@
 class Solution {
 public:
-    int t[101]; // memoization
+    vector<int> dp;
 
     int solve(int i, string &s) {
-        if(t[i] != -1) { // memoization
-            return t[i];
-        }
-
+        // base case
         if(i == s.size()) {
-            return t[i] = 1; // Valid Split found
+            return 1;
         }
 
         if(s[i] == '0') {
-            return t[i] = 0; // Split not possible
+            return 0;
         }
 
-        int single_char = solve(i + 1, s);
-
-        int double_char = 0;
-        if(i + 1 < s.size() && (s[i] == '1' || (s[i] == '2' && s[i + 1] <= '6'))) {
-        // Out-Of-Bound Safe    first 1          first 2 , second less than 7 to be valid alphabet 
-            double_char = solve(i + 2, s);
+        // memo
+        if(dp[i] != -1) {
+            return dp[i];
         }
 
-        return t[i] = single_char + double_char; // memoization first
+        // take one
+        int one = solve(i + 1, s);
+
+        // take two, if valid
+        int two = 0;
+        if (i + 1 < s.size() && (s[i] == '1' || (s[i] == '2' && s[i + 1] <= '6'))) {
+            two = solve(i + 2, s);
+        }
+
+        return dp[i] = one + two;
     }
 
     int numDecodings(string s) {
-        memset(t, -1, sizeof(t));
+        dp.assign(s.size() + 1, -1);
         return solve(0, s);
     }
 };
