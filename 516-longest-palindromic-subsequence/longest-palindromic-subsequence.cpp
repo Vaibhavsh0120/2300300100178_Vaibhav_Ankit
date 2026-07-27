@@ -1,47 +1,38 @@
 class Solution {
 public:
-    vector<vector<int>> dp;
-
-    int solve(int i, string &text1, int j, string &text2) {
-        // base case
-        if(i == text1.size() || j == text2.size()) {
-            return 0;
-        }
-
-        // memo
-        if(dp[i][j] != -1) {
-            return dp[i][j];
-        }
-
-        // move both if same
-        int both = 0;
-        if(text1[i] == text2[j]) {
-            // "1 +" to count length
-            both = 1 + solve(i + 1, text1, j + 1, text2);
-        }
-
-        // try move one, select which gives largest result
-        int single = max(
-            solve(i + 1, text1, j, text2),
-            solve(i, text1, j + 1, text2)
-        );
-
-        return dp[i][j] = max(single, both);
-    }
-
     int longestPalindromeSubseq(string s) {
-        dp.assign(s.size() + 1, vector<int>(s.size() + 1, -1));
-
-        // EXACTLY LIKE LCS - 1143
-        string text1 = s;
-        reverse(s.begin(), s.end());
-        string text2 = s;
         
+        string s1 = s;
+        reverse(s.begin(), s.end());
+        string s2 = s;
 
-        // eg - Longest Common Subsequence
-        // text1 = {bbb}a{b}
-        // text2 = {b}a{bbb}
+        // 1143. Longest Common Subsequence
+        int m = s1.size();
+        int n = s2.size();
 
-        return solve(0, text1, 0, text2);
+        vector<vector<int>> dp(m + 1, vector<int>(n + 1, 0));
+
+        // BASE CASE already handled (initialized with 0)
+
+        // i = 1, INDEX = 0 - for this question for -1 safety
+        // j = 1, INDEX = 0
+        for(int i = 1; i <= m; i++) {
+            for(int j = 1; j <= n; j++) {
+                // converted i and j to normal to access string
+                // when char match move both and count 1 length
+                if(s1[i - 1] == s2[j - 1]) {
+                    dp[i][j] = 1 + dp[i - 1][j - 1];
+                } 
+                // else move both i and j, one at a time
+                else {
+                    dp[i][j] = max(
+                        dp[i - 1][j],
+                        dp[i][j - 1]
+                    );
+                }
+            }
+        }
+
+        return dp[m][n];
     }
 };
